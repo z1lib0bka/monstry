@@ -15,9 +15,9 @@ class Monster(models.Model):
     advanced_time = models.DurationField(verbose_name='Advanced Time to breed',
                                          default=settings.INITIAL_ADVANCED_TIME)
 
-    buy_cost = models.IntegerField(verbose_name='Buy cost')
+    buy_cost = models.fields.PositiveIntegerField(verbose_name='Buy cost')
 
-    sell_cost = models.IntegerField(verbose_name='Sell cost')
+    sell_cost = models.fields.PositiveIntegerField(verbose_name='Sell cost')
 
     # make islands
     # food (???) maybi potom
