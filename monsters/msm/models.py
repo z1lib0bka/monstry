@@ -9,7 +9,7 @@ class Monster(models.Model):
     # convert to many to many, different islands different strategy
     # how_to_breed = models.CharField(max_length=512, verbose_name='Breed Strategy')
 
-    default_time = models.DurationField(verbose_name='Default Time to breed',
+    default_time = models.DurationField(verbose_name='Default Time  to breed',
                                         default=settings.INITIAL_DEFAULT_TIME)
 
     advanced_time = models.DurationField(verbose_name='Advanced Time to breed',
@@ -29,11 +29,11 @@ class Monster(models.Model):
 class Island(models.Model):
     name = models.CharField(max_length=32, verbose_name='Island name')
 
-    level = models.IntegerField(verbose_name='Level')
+    level = models.fields.PositiveIntegerField(verbose_name='Level')
 
-    cost = models.IntegerField(verbose_name='Cost')
+    cost = models.fields.PositiveIntegerField(verbose_name='Cost')
 
-    mirror_cost = models.IntegerField(verbose_name='Mirror cost')
+    mirror_cost = models.fields.PositiveIntegerField(verbose_name='Mirror cost')
 
     monsters = models.ManyToManyField(to='Monster', verbose_name='Monsters')
 
