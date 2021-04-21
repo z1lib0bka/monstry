@@ -6,6 +6,8 @@ from .models import Monster
 
 
 class MonsterForm(forms.ModelForm):
+    image = forms.ClearableFileInput()
+
     default_time = forms.DurationField(widget=TimeDurationWidget(),
                                        required=True,
                                        initial=settings.INITIAL_DEFAULT_TIME,
@@ -19,4 +21,4 @@ class MonsterForm(forms.ModelForm):
     class Meta:
         model = Monster
 
-        fields = ['name', 'default_time', 'advanced_time', 'buy_cost', 'sell_cost']
+        fields = ['name', 'image', 'default_time', 'advanced_time', 'buy_cost', 'sell_cost']

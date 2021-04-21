@@ -5,7 +5,7 @@ from django.conf import settings
 class Monster(models.Model):
     name = models.CharField(max_length=32, verbose_name='Monster name')
 
-    # image = models.ImageField()
+    image = models.ImageField(upload_to='image', null=True, verbose_name='Monster image')
     # convert to many to many, different islands different strategy
     # how_to_breed = models.CharField(max_length=512, verbose_name='Breed Strategy')
 
@@ -21,6 +21,13 @@ class Monster(models.Model):
 
     # make islands
     # food (???) maybi potom
+
+    """def image_tag(self):
+        from django.utils.html import escape
+        return u'<img src="%s">' % escape(self.image.url)
+
+    image_tag.short_description = 'Image'
+    image_tag.allow_tags = True"""
 
     def __str__(self):
         return "{}".format(self.name)

@@ -123,6 +123,10 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+MEDIA_ROOT = Path(__file__).resolve().parent.parent
+
+MEDIA_URL = '/media/'
+
 # constant values that being used in multiple places
 INITIAL_DEFAULT_TIME = td(hours=12)
 
