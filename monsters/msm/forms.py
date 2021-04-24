@@ -21,4 +21,4 @@ class MonsterForm(forms.ModelForm):
     class Meta:
         model = Monster
 
-        fields = ['name', 'image', 'default_time', 'advanced_time', 'buy_cost', 'sell_cost']
+        fields = ['name', 'monster_type', 'image', 'default_time', 'advanced_time', 'buy_cost', 'sell_cost']

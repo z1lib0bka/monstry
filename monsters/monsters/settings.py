@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'durationwidget',
+    'django_tables2',
 
     'msm',
 ]
@@ -131,3 +132,9 @@ MEDIA_URL = '/media/'
 INITIAL_DEFAULT_TIME = td(hours=12)
 
 INITIAL_ADVANCED_TIME = td(hours=9)
+
+MONSTER_TYPES = [
+    ('USUAL', 'Usual'),
+    ('RARE', 'Rare'),
+    ('EPIC', 'Epic'),
+]

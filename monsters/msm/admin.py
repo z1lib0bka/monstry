@@ -6,7 +6,7 @@ from .forms import MonsterForm
 
 @admin.register(Monster)
 class MonsterModelAdmin(admin.ModelAdmin):
-    list_display = ['name', 'default_time', 'advanced_time']
+    list_display = ['name', 'default_time', 'advanced_time', 'monster_type']
 
     ordering = ['name']
 

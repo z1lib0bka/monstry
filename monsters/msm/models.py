@@ -19,6 +19,12 @@ class Monster(models.Model):
 
     sell_cost = models.fields.PositiveIntegerField(verbose_name='Sell cost')
 
+    monster_type = models.CharField(max_length=5,
+                                    choices=settings.MONSTER_TYPES,
+                                    default=settings.MONSTER_TYPES[0][0],
+                                    verbose_name='Monster type',
+                                    )
+
     # make islands
     # food (???) maybi potom
 
