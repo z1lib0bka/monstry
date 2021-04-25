@@ -2,21 +2,29 @@
 {% load static %}
 {% load render_table from django_tables2 %}
 {% block headers %}
-    <title>
-        Island
-    </title>
-    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" /> -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <head>
+        <title>Island</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+          crossorigin="anonymous">
 
-    <link rel="stylesheet" href="{% static 'msm/styles.css' %}"/>
+        <link rel="stylesheet" href="{% static 'msm/styles.css' %}"/>
+    </head>
+
 {% endblock %}
 {% block content %}
-    <h1 class="monster-name">Usual memes</h1>
-    {% render_table usual_monsters %}
-    <br>
-    <h1 class="monster-name">Rare memes</h1>
-    {% render_table rare_monsters %}
-    <br>
-    <h1 class="monster-name">Epic memes</h1>
-    {% render_table epic_monsters %}
+
+    <div class="monster-tables">
+        <h1>Остров Растений</h1>
+        <p>Классный остров, очень нравится, бом бом боммммм</p>
+        <h2 id="monster-type-name">Обычные монстры</h2>
+        {% render_table usual_monsters %}
+        <br>
+        <h2 id="monster-type-name">Rare memes</h2>
+        {% render_table rare_monsters %}
+        <br>
+        <h2 id="monster-type-name">Epic memes</h2>
+        {% render_table epic_monsters %}
+    </div>
+
 {% endblock %}

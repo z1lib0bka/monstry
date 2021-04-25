@@ -3,16 +3,16 @@ from django.conf import settings
 
 
 class Monster(models.Model):
-    name = models.CharField(max_length=32, verbose_name='Monster name')
+    name = models.CharField(max_length=32, verbose_name='Имя монстра')
 
-    image = models.ImageField(upload_to='image', null=True, verbose_name='Monster image')
+    image = models.ImageField(upload_to='image', null=True, verbose_name='Картинка монстра')
     # convert to many to many, different islands different strategy
     # how_to_breed = models.CharField(max_length=512, verbose_name='Breed Strategy')
 
-    default_time = models.DurationField(verbose_name='Default Time  to breed',
+    default_time = models.DurationField(verbose_name='Обычное время выведения',
                                         default=settings.INITIAL_DEFAULT_TIME)
 
-    advanced_time = models.DurationField(verbose_name='Advanced Time to breed',
+    advanced_time = models.DurationField(verbose_name='Улучшенное время выведения',
                                          default=settings.INITIAL_ADVANCED_TIME)
 
     buy_cost = models.fields.PositiveIntegerField(verbose_name='Buy cost')
