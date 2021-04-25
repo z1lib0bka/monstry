@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.urls import reverse
 
 
 class Monster(models.Model):
@@ -28,12 +29,8 @@ class Monster(models.Model):
     # make islands
     # food (???) maybi potom
 
-    """def image_tag(self):
-        from django.utils.html import escape
-        return u'<img src="%s">' % escape(self.image.url)
-
-    image_tag.short_description = 'Image'
-    image_tag.allow_tags = True"""
+    def get_absolute_url(self):
+        return reverse('islands:monster_detail', args=[self.id])
 
     def __str__(self):
         return "{}".format(self.name)

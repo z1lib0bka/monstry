@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block headers %}
+    <head>
+        <title>{{ monster.name }}</title>
+    </head>
+{% endblock %}
+
+{% block content %}
+    <img src="../media/{{ monster.image }}">
+    <h2>{{ monster.name }}</h2>
+
+{% endblock %}

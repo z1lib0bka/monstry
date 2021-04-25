@@ -25,6 +25,18 @@
         <br>
         <h2 id="monster-type-name">Epic memes</h2>
         {% render_table epic_monsters %}
+
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const rows = document.querySelectorAll("tr[data-href]");
+
+                rows.forEach(row => {
+                    row.addEventListener("click", () => {
+                        window.location.href = row.dataset.href;
+                    });
+                });
+            });
+        </script>
     </div>
 
 {% endblock %}

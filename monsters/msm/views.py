@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_list_or_404
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView
 
 from django_tables2 import SingleTableView
@@ -32,7 +32,10 @@ class MonsterListView(SingleTableView):
     context_object_name = 'monsters'
 
 
+def monster_detail(request, monster_id):
+    monster = get_object_or_404(Monster, id=monster_id)
 
+    return render(request, 'msm/monster_detail.html', {'monster': monster})
 
 
 

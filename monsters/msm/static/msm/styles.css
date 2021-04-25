@@ -11,11 +11,16 @@ body {
 }
 
 .monster-tables {
+    cursor: pointer;
     margin-top: 30px;
     margin-left: 150px;
     margin-right: 150px;
     padding: 15px 60px;
     background-color: whitesmoke;
+}
+
+.monster-tables tbody tr:hower {
+    background-color: gray;
 }
 
 #bootstrap-overrides h1 {

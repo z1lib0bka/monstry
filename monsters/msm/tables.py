@@ -28,6 +28,8 @@ class MonsterTable(tables.Table):
 
         attrs = {'class': 'table table-hover',
                  'thead': {
-                     'class': 'thead-light',
+                     'class': 'thead-dark',
                  },
                  }
+
+        row_attrs = {'data-href': lambda record: record.get_absolute_url}
