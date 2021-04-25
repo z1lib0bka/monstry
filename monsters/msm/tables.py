@@ -3,8 +3,12 @@ from .models import Monster
 
 
 class MonsterTable(tables.Table):
+    # name = tables.Column(verbose_name='Name')
+
     class Meta:
         model = Monster
-        template_name = 'django_tables2/bootstrap.html'
+        template_name = 'django_tables2/semantic.html'
         fields = ("name", "image", "default_time", "advanced_time",)
+        order_by = ("name",)
+
 

@@ -22,6 +22,6 @@ from msm import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('islands/', views.MonsterListView.as_view()),
-
+    # path('islands/', views.MonsterListView.as_view()),
+    path('islands/', views.list_monsters_of_the_island),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
