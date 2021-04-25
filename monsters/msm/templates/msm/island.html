@@ -1,18 +1,22 @@
 {% extends 'base.html' %}
+{% load static %}
 {% load render_table from django_tables2 %}
 {% block headers %}
     <title>
         Island
     </title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" /> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{% static 'msm/styles.css' %}"/>
 {% endblock %}
 {% block content %}
-    <h1>Usual memes</h1>
+    <h1 class="monster-name">Usual memes</h1>
     {% render_table usual_monsters %}
     <br>
-    <h1>Rare memes</h1>
+    <h1 class="monster-name">Rare memes</h1>
     {% render_table rare_monsters %}
     <br>
-    <h1>Epic memes</h1>
+    <h1 class="monster-name">Epic memes</h1>
     {% render_table epic_monsters %}
 {% endblock %}

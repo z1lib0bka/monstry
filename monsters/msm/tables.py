@@ -7,8 +7,15 @@ class MonsterTable(tables.Table):
 
     class Meta:
         model = Monster
-        template_name = 'django_tables2/semantic.html'
+
+        template_name = 'django_tables2/bootstrap4.html'
+
         fields = ("name", "image", "default_time", "advanced_time",)
+
         order_by = ("name",)
 
-
+        attrs = {'class': 'table table-sm',
+                 'thead': {
+                     'class': 'thead-light',
+                 }
+        }

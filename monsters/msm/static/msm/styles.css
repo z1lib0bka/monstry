@@ -1,0 +1,10 @@
+.table-container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 60%;
+}
+
+.monster-name {
+    margin-left: 20%;
+    margin-right: auto;
+}
