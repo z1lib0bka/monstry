@@ -24,11 +24,9 @@ class MonsterTable(tables.Table):
 
         fields = ("name", "image", "default_time", "advanced_time",)
 
-        order_by = ("name",)
-
         attrs = {'class': 'table table-hover',
                  'thead': {
-                     'class': 'thead-dark',
+                     'class': 'thead-light',
                  },
                  }
 

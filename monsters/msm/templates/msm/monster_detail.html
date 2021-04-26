@@ -9,5 +9,11 @@
 {% block content %}
     <img src="../media/{{ monster.image }}">
     <h2>{{ monster.name }}</h2>
+    <p>Обычное время: {{ monster.default_time }}</p>
+    <p>Улучшенное время: {{ monster.advanced_time_time }}</p>
+    <p>Стратегии выведения: {% for start in monster.how_to_breed.all %}
+                                {{ start }}
+                            {% endfor %}
+    </p>
 
 {% endblock %}

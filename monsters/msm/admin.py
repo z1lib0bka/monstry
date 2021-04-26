@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Monster, Island
+from .models import Monster, Island, BreedingStrategy
 from .forms import MonsterForm
 
 
@@ -9,6 +9,8 @@ class MonsterModelAdmin(admin.ModelAdmin):
     list_display = ['name', 'default_time', 'advanced_time', 'monster_type']
 
     ordering = ['name']
+
+    filter_horizontal = ['how_to_breed']
 
     form = MonsterForm
 
@@ -20,3 +22,8 @@ class IslandModelAdmin(admin.ModelAdmin):
     filter_horizontal = ['monsters']
 
     ordering = ['name']
+
+
+@admin.register(BreedingStrategy)
+class BreedingStrategyModelAdmin(admin.ModelAdmin):
+    list_display = ['monster1', 'monster2', 'result_monster']

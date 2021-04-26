@@ -2,7 +2,7 @@ from django import forms
 from django.conf import settings
 from durationwidget.widgets import TimeDurationWidget
 
-from .models import Monster
+from .models import Monster, BreedingStrategy
 
 
 class MonsterForm(forms.ModelForm):
@@ -21,4 +21,5 @@ class MonsterForm(forms.ModelForm):
     class Meta:
         model = Monster
 
-        fields = ['name', 'monster_type', 'image', 'default_time', 'advanced_time', 'buy_cost', 'sell_cost']
+        fields = ['name', 'monster_type', 'image', 'default_time',
+                  'advanced_time', 'buy_cost', 'sell_cost', 'how_to_breed']
