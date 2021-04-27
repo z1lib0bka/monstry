@@ -22,4 +22,4 @@ class MonsterForm(forms.ModelForm):
         model = Monster
 
         fields = ['name', 'monster_type', 'image', 'default_time',
-                  'advanced_time', 'buy_cost', 'sell_cost', 'how_to_breed']
+                  'advanced_time', 'currency', 'buy_cost', 'sell_cost', 'how_to_breed']

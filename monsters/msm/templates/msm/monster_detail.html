@@ -1,19 +1,39 @@
 {% extends 'base.html' %}
+{% load render_table from django_tables2 %}
+{% load static %}
 
 {% block headers %}
     <head>
         <title>{{ monster.name }}</title>
     </head>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+          crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{% static 'msm/monster_styles.css' %}"/>
 {% endblock %}
 
 {% block content %}
-    <img src="../media/{{ monster.image }}">
-    <h2>{{ monster.name }}</h2>
-    <p>Обычное время: {{ monster.default_time }}</p>
-    <p>Улучшенное время: {{ monster.advanced_time_time }}</p>
-    <p>Стратегии выведения: {% for start in monster.how_to_breed.all %}
-                                {{ start }}
-                            {% endfor %}
-    </p>
+    <div class="monster-tables" id="dv">
+        <h2>{{ monster.name }}</h2>
+        <br>
+        <img src="../media/{{ monster.image }}" class="central">
+        <p class="p_central">Дефолтное время: <b>{{ monster.default_time }}</b></p>
+        <p class="p_central">Улучшенное время: <b>{{ monster.advanced_time }}</b></p>
+        <p class="p_central"> Стоимость покупки: <b>{{ monster.buy_cost }}</b>
+        {% if monster.currency == 'DIAMONDS' %}
+                <img src="{% static 'msm/Diamond.png' %}" style="margin-left: 4px;">
+            {% else %}
+                <img src="{% static 'msm/Coins.png' %}" style="margin-left: 4px;">
+            {% endif %}
+        </p>
+        <p class="p_central">Стоимость продажи: <b>{{ monster.sell_cost }}</b>
+            <img src="{% static 'msm/Coins.png' %}" style="margin-left: 4px;">
+        </p>
+        <b><p class="p_central">Стратегии выведения: </p>
+            {% render_table breeding_strats %}</b>
+    </div>
+
 
 {% endblock %}

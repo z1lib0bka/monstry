@@ -1,10 +1,9 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView
 
 from django_tables2 import SingleTableView
 
 from .models import Monster
-from .tables import MonsterTable
+from .tables import MonsterTable, BreedingStrategiesTable
 
 
 def list_monsters_of_the_island(request):
@@ -35,7 +34,11 @@ class MonsterListView(SingleTableView):
 def monster_detail(request, monster_id):
     monster = get_object_or_404(Monster, id=monster_id)
 
-    return render(request, 'msm/monster_detail.html', {'monster': monster})
+    breeding_strategies = BreedingStrategiesTable(monster.how_to_breed.all())
+
+    return render(request, 'msm/monster_detail.html', {'monster': monster,
+                                                       'breeding_strats': breeding_strategies,
+                                                       })
 
 
 

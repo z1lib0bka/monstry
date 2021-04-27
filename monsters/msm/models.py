@@ -8,7 +8,9 @@ class Monster(models.Model):
 
     image = models.ImageField(upload_to='image', null=True, verbose_name='Картинка монстра')
 
-    how_to_breed = models.ManyToManyField(to='BreedingStrategy', verbose_name='Стратегия выведения')
+    how_to_breed = models.ManyToManyField(to='BreedingStrategy',
+                                          blank=True,
+                                          verbose_name='Стратегия выведения')
 
     default_time = models.DurationField(verbose_name='Обычное время выведения',
                                         default=settings.INITIAL_DEFAULT_TIME)
@@ -20,9 +22,15 @@ class Monster(models.Model):
 
     sell_cost = models.fields.PositiveIntegerField(verbose_name='Sell cost')
 
+    currency = models.CharField(max_length=8,
+                                choices=settings.CURRENCY_OPTIONS,
+                                default=settings.CURRENCY_OPTIONS[0][0],
+                                verbose_name='Currency',
+                                )
+
     monster_type = models.CharField(max_length=5,
-                                    choices=settings.MONSTER_TYPES,
-                                    default=settings.MONSTER_TYPES[0][0],
+                                    choices=settings.MONSTER_TYPE_OPTIONS,
+                                    default=settings.MONSTER_TYPE_OPTIONS[0][0],
                                     verbose_name='Monster type',
                                     )
 
@@ -49,6 +57,9 @@ class Island(models.Model):
 
     # uluchsheniya maybi potom
 
+    def __str__(self):
+        return "{}".format(self.name)
+
 
 class BreedingStrategy(models.Model):
     monster1 = models.ForeignKey(to='Monster',
@@ -63,13 +74,10 @@ class BreedingStrategy(models.Model):
                                  related_name='breeding_monster2',
                                  )
 
-    result_monster = models.ForeignKey(to='Monster',
-                                       verbose_name='Результат',
-                                       on_delete=models.CASCADE,
-                                       related_name='breeding_monster_result',
-                                       )
-
-    # island = models.ForeignKey(to='Island', verbose_name='Остров')
+    island = models.ForeignKey(to='Island',
+                               null=True,
+                               verbose_name='Остров',
+                               on_delete=models.CASCADE)
 
     def __str__(self):
         return '{} + {}'.format(self.monster1.name, self.monster2.name)

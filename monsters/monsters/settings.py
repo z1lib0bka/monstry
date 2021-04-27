@@ -133,8 +133,13 @@ INITIAL_DEFAULT_TIME = td(hours=12)
 
 INITIAL_ADVANCED_TIME = td(hours=9)
 
-MONSTER_TYPES = [
+MONSTER_TYPE_OPTIONS = (
     ('USUAL', 'Usual'),
     ('RARE', 'Rare'),
     ('EPIC', 'Epic'),
-]
+)
+
+CURRENCY_OPTIONS = (
+    ('DIAMONDS', 'Diamonds'),
+    ('COINS', 'Coins')
+)

@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+body {
+    background-image: url('blue_bg.jpg');
+    font-family: 'Noto Sans', sans-serif;
+}
+
+h2 {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+}
+p {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 20px;
+}
+
+.central {
+    display:block;
+    margin:auto;
+    width: 25%;
+    height: 25%;
+}
+
+.p_central {
+    text-align: center;
+}
+
+.monster-tables {
+    margin-top: 30px;
+    margin-left: 150px;
+    margin-right: 150px;
+    padding: 15px 60px;
+    background-color: whitesmoke;
+}
+
+.table {
+    cursor: pointer;
+    max-width: fit-content;
+    margin: auto auto;
+}
+
+.monster-tables tbody tr:hower {
+    background-color: gray;
+}

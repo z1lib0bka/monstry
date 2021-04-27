@@ -26,4 +26,4 @@ class IslandModelAdmin(admin.ModelAdmin):
 
 @admin.register(BreedingStrategy)
 class BreedingStrategyModelAdmin(admin.ModelAdmin):
-    list_display = ['monster1', 'monster2', 'result_monster']
+    list_display = ['monster1', 'monster2', 'island']
