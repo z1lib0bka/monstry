@@ -37,6 +37,9 @@ class Monster(models.Model):
     # make islands
     # food (???) maybi potom
 
+    class Meta:
+        ordering = ('default_time', 'advanced_time', 'name',)
+
     def get_absolute_url(self):
         return reverse('islands:monster_detail', args=[self.id])
 
@@ -47,6 +50,8 @@ class Monster(models.Model):
 class Island(models.Model):
     name = models.CharField(max_length=32, verbose_name='Island name')
 
+    slug = models.CharField(max_length=16, verbose_name='slug', blank=True)
+
     level = models.fields.PositiveIntegerField(verbose_name='Level')
 
     cost = models.fields.PositiveIntegerField(verbose_name='Cost')
@@ -56,6 +61,9 @@ class Island(models.Model):
     monsters = models.ManyToManyField(to='Monster', verbose_name='Monsters')
 
     # uluchsheniya maybi potom
+
+    def get_absolute_url(self):
+        return reverse('islands:monster_list', args=[self.slug])
 
     def __str__(self):
         return "{}".format(self.name)
