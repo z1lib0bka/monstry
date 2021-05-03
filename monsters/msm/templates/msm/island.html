@@ -3,7 +3,7 @@
 {% load render_table from django_tables2 %}
 {% block headers %}
     <head>
-        <title>Island</title>
+        <title>{{ island.name }}</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
           integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
           crossorigin="anonymous">
@@ -15,8 +15,15 @@
 {% block content %}
 
     <div class="monster-tables">
-        <h1>Остров Растений</h1>
-        <p>Классный остров, очень нравится, бом бом боммммм</p>
+        <h1>{{ island.name }}</h1>
+        <p>
+            Доступен с <b>{{ island.level }} уровня</b> и стоит <b>{{ island.cost }}</b>
+            <img src="{% static 'msm/Coins.png' %}" style="margin-left: 4px;">
+        </p>
+        <p>
+            Зеркальный остров доступен с <b>20 уровня</b> и стоит <b>{{ island.mirror_cost }}</b>
+            <img src="{% static 'msm/Diamond.png' %}" style="margin-left: 4px;">
+        </p>
         <h2 id="monster-type-name">Обычные монстры</h2>
         {% render_table usual_monsters %}
         <br>

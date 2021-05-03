@@ -18,7 +18,7 @@
     <div class="monster-tables" id="dv">
         <h2>{{ monster.name }}</h2>
         <br>
-        <img src="../media/{{ monster.image }}" class="central">
+        <img src="/media/{{ monster.image }}" class="central">
         <p class="p_central">Дефолтное время: <b>{{ monster.default_time }}</b></p>
         <p class="p_central">Улучшенное время: <b>{{ monster.advanced_time }}</b></p>
         <p class="p_central"> Стоимость покупки: <b>{{ monster.buy_cost }}</b>
@@ -31,8 +31,15 @@
         <p class="p_central">Стоимость продажи: <b>{{ monster.sell_cost }}</b>
             <img src="{% static 'msm/Coins.png' %}" style="margin-left: 4px;">
         </p>
-        <b><p class="p_central">Стратегии выведения: </p>
-            {% render_table breeding_strats %}</b>
+            {% if breeding_strats is not None %}
+                <b><p class="p_central">Стратегии выведения: </p>
+
+                {% render_table breeding_strats %}</b>
+
+            {% else %}
+                <b><p class="p_central">Этого монстра нельзя вывести.</p></b>
+            {% endif %}
+
     </div>
 
 

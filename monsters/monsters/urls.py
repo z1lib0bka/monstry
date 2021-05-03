@@ -21,7 +21,11 @@ from django.conf.urls import include, url
 
 from django.conf import settings
 
+from msm.views import search_results, monster_detail
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^islands/', include(('msm.urls', 'islands'), namespace='islands',)),
+    path('monster/<int:monster_id>/', monster_detail, name='global_monster_page'),
+    path('search_results', search_results, name='search_results'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

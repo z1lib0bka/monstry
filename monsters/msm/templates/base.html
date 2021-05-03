@@ -4,6 +4,24 @@
     {% block headers %}{% endblock %}
 
     <body>
+        <div class="nb">
+            <ul class="menu-main">
+                <li><a href="{% url 'islands:monster_list' island_slug='plant' %}">Растения</a></li>
+                <li><a href="{% url 'islands:monster_list' island_slug='cold' %}">Холод</a></li>
+                <li><a href="{% url 'islands:monster_list' island_slug='air' %}">Воздух</a></li>
+                <li><a href="{% url 'islands:monster_list' island_slug='water' %}">Вода</a></li>
+                <li><a href="{% url 'islands:monster_list' island_slug='earth' %}">Земля</a></li>
+
+                <form class="d-xl-inline-flex" method="post" action="{% url 'search_results' %}">
+                    {% csrf_token %}
+                    <input class="form-control me-2"
+                           type="search" placeholder="Поиск"
+                           aria-label="Поиск" name="searched">
+                    <button class="btn btn-outline-secondary" type="submit">Искать</button>
+                </form>
+            </ul>
+        </div>
+
         {% block content %}{% endblock %}
     </body>
 </html>

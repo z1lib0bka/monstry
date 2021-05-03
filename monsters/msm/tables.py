@@ -7,7 +7,7 @@ from .models import Monster, BreedingStrategy
 class ImageColumn(tables.Column):
     def render(self, value):
         return format_html(
-            '<img src="../media/{url}" height="50px", width="50px">',
+            '<img src="/media/{url}" height="50px", width="50px">',
             url=value
         )
 
@@ -30,7 +30,7 @@ class MonsterTable(tables.Table):
                  },
                  }
 
-        row_attrs = {'data-href': lambda record: record.get_absolute_url}
+        row_attrs = {'data-href': lambda record: str(record.id)}
 
 
 class BreedingStrategiesTable(tables.Table):

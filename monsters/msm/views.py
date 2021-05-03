@@ -1,9 +1,20 @@
 from django.shortcuts import render, get_object_or_404
 
-from django_tables2 import SingleTableView
 
 from .models import Monster, Island
 from .tables import MonsterTable, BreedingStrategiesTable
+
+
+def search_results(request):
+    if request.method == 'POST':
+        searched = request.POST['searched']
+
+        monster_search_results = Monster.objects.filter(name__contains=searched)
+
+        return render(request, 'msm/search_results.html', {'searched': searched,
+                                                           'search_results': monster_search_results})
+    else:
+        return render(request, 'msm/search_results.html', {})
 
 
 def list_monsters_of_the_island(request, island_slug):
@@ -18,20 +29,8 @@ def list_monsters_of_the_island(request, island_slug):
     return render(request, 'msm/island.html', {'usual_monsters': usual_table,
                                                'rare_monsters': rare_table,
                                                'epic_monsters': epic_table,
-                                               'island_slug': island_slug,
+                                               'island': island,
                                                })
-
-
-class MonsterListView(SingleTableView):
-    table_class = MonsterTable
-
-    queryset = Monster.objects.filter(monster_type='USUAL')
-
-    table_data = queryset
-
-    template_name = 'msm/island.html'
-
-    context_object_name = 'monsters'
 
 
 def monster_detail(request, monster_id, island_slug=None):
@@ -39,8 +38,12 @@ def monster_detail(request, monster_id, island_slug=None):
 
     breeding_strategies = BreedingStrategiesTable(monster.how_to_breed.all())
 
+    if breeding_strategies.rows.__len__() == 0:
+        breeding_strategies = None
+
     return render(request, 'msm/monster_detail.html', {'monster': monster,
                                                        'breeding_strats': breeding_strategies,
+                                                       'island_slug': island_slug,
                                                        })
 
 

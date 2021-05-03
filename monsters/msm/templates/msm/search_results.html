@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load render_table from django_tables2 %}
+{% load static %}
+
+{% block headers %}
+    <head>
+        <title>Результаты поиска</title>
+    </head>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+          crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{% static 'msm/monster_styles.css' %}"/>
+{% endblock %}
+
+{% block content %}
+    {% if searched %}
+        <h1>Результаты поиска по {{ searched }}</h1><br/>
+        {% for monster in search_results %}
+            <a href="{% url 'global_monster_page' monster_id=monster.id %}">{{ monster }}</a><br/>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
