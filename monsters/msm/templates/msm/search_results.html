@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load render_table from django_tables2 %}
 {% load static %}
 
 {% block headers %}
@@ -15,10 +14,12 @@
 {% endblock %}
 
 {% block content %}
+    <div class="monster-tables">
     {% if searched %}
-        <h1>Результаты поиска по {{ searched }}</h1><br/>
+        <h2>Результаты поиска по "{{ searched }}":</h2><br/>
         {% for monster in search_results %}
-            <a href="{% url 'global_monster_page' monster_id=monster.id %}">{{ monster }}</a><br/>
+            <a href="{% url 'global_monster_page' monster_id=monster.id %}"><p class="p_central">{{ monster }}</p></a>
         {% endfor %}
     {% endif %}
+    </div>
 {% endblock %}
