@@ -7,9 +7,9 @@ from .tables import MonsterTable, BreedingStrategiesTable
 
 def search_results(request):
     if request.method == 'POST':
-        searched = request.POST['searched']
-
-        monster_search_results = Monster.objects.filter(name__contains=searched)
+        searched = str(request.POST['searched'])
+        # Note: you should remove capitalize method when using different DB, rather then SQLite.
+        monster_search_results = Monster.objects.filter(name__contains=searched.capitalize())
 
         return render(request, 'msm/search_results.html', {'searched': searched,
                                                            'search_results': monster_search_results})
